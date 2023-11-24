@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody2D player_rig;
-    
+    public DynamicJoystick joystick;
     private void Start()
     {
         SubscribeEvent();
@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     }
     public void MovePos()
     {
-        player_rig.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * 5;
+        player_rig.velocity = new Vector2(joystick.Horizontal, joystick.Vertical) * 5;
     }
     void SubscribeEvent()
     {

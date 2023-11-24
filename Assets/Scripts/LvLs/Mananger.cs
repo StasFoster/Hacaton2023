@@ -10,6 +10,7 @@ public class Mananger : MonoBehaviour
     public Box[] boxes;
     public Player player;
     public Generator gen;
+    public DynamicJoystick joy;
     FinishMananger man;
     Restart rer;
     public GameObject Cam_menu, Cam_Lvl, panel;
@@ -30,6 +31,7 @@ public class Mananger : MonoBehaviour
     public void gener()
     {     
         man.n = 3;
+        player.joystick = joy;
         Vector2[] pos_box = new Vector2[3] { new Vector2(4, 2), new Vector2(3, 5), new Vector2(8, 4) };
         Box[] box_box = new Box[3] { boxes[0], boxes[0], boxes[0] };
         int[,] x = new int[8, 11] { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 1, 1, 2, 1, 1, 1, 1, 0 }, { 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0 }, { 0, 1, 1, 1, 1, 0, 0, 0, 2, 1, 0 }, { 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0 }, { 0, 1, 1, 1, 2, 0, 1, 1, 1, 1, 0 }, { 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
