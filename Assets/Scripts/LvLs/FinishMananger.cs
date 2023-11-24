@@ -9,24 +9,16 @@ using System;
 
 public class FinishMananger : MonoBehaviour
 {
-    public int n, scen, refer;
-    GameObject Menu, LVL1;
+    public int n;
     PlayableDirector finising;
-    public Button back;
-    public static Action fina;
     private void Start()
     {
         finising = GetComponent<PlayableDirector>();
-        back.onClick.AddListener(Back);
         Subscribe_Event();
-    }
-    private void Update()
-    {
-        
     }
     void Subscribe_Event()
     {
-        Finish.fin += start_finish;
+        Finish.finissh_component += start_finish;
     }
     void start_finish()
     {
@@ -36,10 +28,5 @@ public class FinishMananger : MonoBehaviour
             finising.Play();
         }
     }
-    void Back()
-    {
-        fina.Invoke();
-        Menu.SetActive(true);
-        LVL1.SetActive(false);
-    }
+
 }

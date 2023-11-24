@@ -5,20 +5,20 @@ using UnityEngine;
 
 public class Finish : Tile
 {
-    public static Action fin;
+    public static Action finissh_component;
     bool stop = false;
-    int h = 1;
+    bool h = true;
     private void Update()
     {
         if (Connect)
         {
             a.transform.position = transform.position;
-
-            if (h == 1)
+            if (h)
             {
-                h--;
-                fin.Invoke();
+                h=false;
+                finissh_component.Invoke();
             }
         }
+        else h = true;
     }
 }

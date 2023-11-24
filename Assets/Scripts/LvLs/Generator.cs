@@ -58,10 +58,9 @@ public class Generator : MonoBehaviour
     }
     void Subscribe_Events()
     {
-        FinishMananger.fina += DeliteMap;
-        Restart.Res += DeliteMap;
+
     }
-    void DeliteMap()
+    public void DeliteMap()
     {
         foreach(Tile a in ActivEl) Destroy(a.gameObject);
         Destroy(ActivePlayer.gameObject);
