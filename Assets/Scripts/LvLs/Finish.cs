@@ -10,7 +10,7 @@ public class Finish : Tile
     bool h = true;
     private void Update()
     {
-        if (Connect)
+        if (Connect && a.gameObject.layer == 8)
         {
             a.transform.position = transform.position;
             if (h)

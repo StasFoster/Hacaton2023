@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6044502557884531928}
   - component: {fileID: 6374795412214987175}
   - component: {fileID: 4352684211347670890}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Finish_Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

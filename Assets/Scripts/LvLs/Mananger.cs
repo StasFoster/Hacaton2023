@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Mananger : MonoBehaviour
+public class Mananger : MonoBehaviour, IMananger
 {
     public Tile[] tiles;
     public Box[] boxes;
@@ -12,15 +12,17 @@ public class Mananger : MonoBehaviour
     public Generator gen;
     public DynamicJoystick joy;
     FinishMananger man;
-    Restart rer;
     public GameObject Cam_menu, Cam_Lvl, panel;
     public static Action back, res;
     public Button Back_, re1, re2;
     public Transform start_pos;
+    public FileMananger file;
+    public DataLVL1 data;
 
     Generator generator;
     private void Start()
     {
+        
 
         Back_.onClick.AddListener(Return_menu);
         re1.onClick.AddListener(Restart);
@@ -29,23 +31,38 @@ public class Mananger : MonoBehaviour
         ManangerLvL.Start_LVL1 += gener;
     }
     public void gener()
-    {     
+    {
+
         man.n = 3;
         player.joystick = joy;
-        Vector2[] pos_box = new Vector2[3] { new Vector2(4, 2), new Vector2(3, 5), new Vector2(8, 4) };
         Box[] box_box = new Box[3] { boxes[0], boxes[0], boxes[0] };
-        int[,] x = new int[8, 11] { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 1, 1, 2, 1, 1, 1, 1, 0 }, { 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0 }, { 0, 1, 1, 1, 1, 0, 0, 0, 2, 1, 0 }, { 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0 }, { 0, 1, 1, 1, 2, 0, 1, 1, 1, 1, 0 }, { 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
         generator = Instantiate(gen);
-        generator.init(8, 11, x, new Vector2(8, 1), box_box, pos_box, player, tiles);
+        int[,] x = new int[13, 12] { 
+            { 0,0,0,0,0,0,0,0,0,0,0,0 },
+            { 4,3,3,3,3,3,5,5,5,5,5,0 }, 
+            { 4,3,1,1,1,1,5,5,5,5,5,0 }, 
+            { 4,3,1,1,1,1,5,5,5,5,5,0 }, 
+            { 4,3,3,3,3,3,5,5,5,5,5,0 },
+            { 0,5,5,5,5,5,5,5,5,5,5,0 },
+            { 0,5,5,5,5,5,5,5,5,5,5,0 },
+            { 0,0,0,0,0,0,1,1,0,0,0,0 },
+            { 0,2,1,1,0,1,1,1,1,1,1,0 },
+            { 0,2,1,1,0,1,1,1,6,1,1,0 },
+            { 0,2,1,1,1,1,1,1,1,1,1,0 },
+            { 0,1,1,1,1,1,1,1,1,1,1,0 },
+            { 0,0,0,0,0,0,0,0,0,0,0,0 }
+        };
+        Vector2[] vector2s = new Vector2[3] {new Vector2(3,3), new Vector2(5, 2), new Vector2(9, 3) };
+        generator.init(13, 12, x, new Vector2(7,3), box_box, vector2s, player, tiles);
         generator.Generator_Map();
         generator.Generator_Player();
         generator.Generator_Box();
     }
-    void Ungenerator()
+    public void Ungenerator()
     {
         generator.DeliteMap();
     }
-    void Return_menu()
+    public void Return_menu()
     {
         panel.transform.position = start_pos.position;
         Ungenerator();
@@ -53,7 +70,7 @@ public class Mananger : MonoBehaviour
         Cam_Lvl.SetActive(false);
         back.Invoke();
     }
-    void Restart()
+    public void Restart()
     {
         Ungenerator();
         gener();

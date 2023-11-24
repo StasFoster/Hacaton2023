@@ -13,11 +13,11 @@ public class Tile : MonoBehaviour
     }
     protected void OnTriggerStay2D(Collider2D collision)
     {
-        if (((collision.transform.position - transform.position).magnitude < 0.5) && collision.gameObject.layer == 8)
+        if (((collision.transform.position - transform.position).magnitude < 0.5) && (collision.gameObject.layer == 8 || collision.gameObject.layer == 10))
         {
             Connect = true;
             a = collision.GetComponent<Tile>();
-            collision.transform.position = Vector2.MoveTowards(collision.transform.position, transform.position, 0.09f);
+            collision.transform.position = Vector2.MoveTowards(collision.transform.position, transform.position, 0.03f);
         }
     }
 }
