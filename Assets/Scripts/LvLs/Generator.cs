@@ -13,8 +13,8 @@ public class Generator : MonoBehaviour
     Player player;
     Player ActivePlayer;
     Box[] boxes;
-    int[,] map;
-    List<Tile> ActivEl;
+    public int[,] map;
+    public List<Tile> ActivEl;
     private void Awake()
     {
         ActivEl = new List<Tile>();
@@ -63,6 +63,6 @@ public class Generator : MonoBehaviour
     public void DeliteMap()
     {
         foreach(Tile a in ActivEl) Destroy(a.gameObject);
-        Destroy(ActivePlayer.gameObject);
+        Destroy(ActivePlayer?.gameObject);
     }
 }

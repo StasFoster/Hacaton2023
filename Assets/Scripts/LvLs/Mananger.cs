@@ -13,11 +13,9 @@ public class Mananger : MonoBehaviour, IMananger
     public DynamicJoystick joy;
     FinishMananger man;
     public GameObject Cam_menu, Cam_Lvl, panel;
-    public static Action back, res;
-    public Button Back_, re1, re2;
+    public static Action back, open1;
+    public Button Back_, re1, re2,e3;
     public Transform start_pos;
-    public FileMananger file;
-    public DataLVL1 data;
 
     Generator generator;
     private void Start()
@@ -68,7 +66,8 @@ public class Mananger : MonoBehaviour, IMananger
         Ungenerator();
         Cam_menu.SetActive(true);
         Cam_Lvl.SetActive(false);
-        back.Invoke();
+        e3.gameObject.SetActive(true );
+        open1.Invoke();
     }
     public void Restart()
     {
